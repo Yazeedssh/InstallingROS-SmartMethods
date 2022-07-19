@@ -1,5 +1,5 @@
 # Installing-ROS-on-Ubuntu_20.04--Smart-Methods--
-# Ubuntu installation steps
+## Ubuntu installation steps
 
 After setting up and installing the VirtualBox from https://www.virtualbox.org
 
@@ -12,18 +12,72 @@ In the operating system WELCOME screen well appeares select " INSTALL UBUNTU " >
 
 The last few steps is to edit the size to a full screen we well right some commandes so search for the " Terminal " and right :
 
-1- sudo apt-get update 
+```1- sudo apt-get update ```
 
-Enter your password :
+> Enter your password :
 
-2- sudo apt-get upgrade 
+```2- sudo apt-get upgrade ```
 
-Do you want to continue? [y\n] : yes 
+> Do you want to continue? [y\n] : yes 
 
 It well start an update to the system and it may take a few minutes
 
-3- sudo apt install build-essential dkms linux-headers-$(uname -r)
+```3- sudo apt install build-essential dkms linux-headers-$(uname -r)```
 
-Do you want to continue [y\n] : yes 
+> Do you want to continue [y\n] : yes 
 
 After it complete close the terminal window > click on "Devices" on the top > Choose " INSERT GUEST ADDITION CD IMAGE " > Click on " RUN " and type your password > It well start install guest addition modules > Press " Enter " and Restart the system and select " Power off " let it shut down and > Resize the screen and it well be full screen. 
+
+## ROS installation steps 
+
+Open Terminal and right the following commandes
+
+### 1-Setup your sources.list
+
+```sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'```
+
+### 2-Set up your keys
+
+```sudo apt install curl```
+
+```curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -```
+
+### 3-Installation
+
+```sudo apt update```
+
+There are 3 options in wiki.ros.org/Installation/Ubuntu  website you can pick how much of ROS you would like to install but this is the full version
+
+### 4-Desktop-Full Install: (Recommended) : Everything in Desktop plus 2D/3D simulators and 2D/3D perception packages
+
+```sudo apt install ros-noetic-desktop-full```
+
+### 5-Setup the environment
+
+```source /opt/ros/noetic/setup.bash```
+
+#### We have to right this command every time we run ROS and to make it convenient we can run it automatically and source this script every time a new shell is launched
+
+```echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc```
+
+### 6- Check if ROS is installed correctly
+
+``` roscore ```
+
+#### If you want to install a specific package directly 
+
+```sudo apt install ros-noetic-PACKAGE```
+
+### 7-Dependencies for building packages
+
+```sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential```
+
+#### Initialize rosdep
+
+```sudo apt install python3-rosdep```
+
+```sudo rosdep init```
+
+```rosdep update```
+
+### Now you installed ROS and you can test your installation
