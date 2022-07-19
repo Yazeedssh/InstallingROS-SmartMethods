@@ -30,7 +30,7 @@ After it complete close the terminal window > click on "Devices" on the top > Ch
 
 ## ROS installation steps 
 
-Open Terminal and right the following commandes
+Open Terminal and right the following commands
 
 ### 1-Setup your sources.list
 
